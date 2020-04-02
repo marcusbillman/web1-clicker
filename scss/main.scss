@@ -166,3 +166,31 @@ a {
         font-weight: 500;
     }
 }
+
+/* ========== MEDIA QUERIES ========== */
+
+@media (min-width: 900px) {
+    .main {
+        display: flex;
+    }
+    .main-section,
+    .shop-section {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        min-height: 100vh;
+        padding: 0;
+        &__container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .score {
+        display: inline-flex;
+    }
+    .bonus {
+        width: 42rem;
+    }
+}

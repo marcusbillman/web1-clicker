@@ -18,8 +18,25 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    font-family: "Barlow", sans-serif;
+    color: $clr-off-white;
+}
+
+a {
+    color: inherit;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.main {
+    background: $clr-grey-2;
+}
+
+.shop {
+    background: $clr-grey-1;
 }

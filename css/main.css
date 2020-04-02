@@ -11,9 +11,26 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Barlow", sans-serif;
+  color: #edfeff;
+}
+
+a {
+  color: inherit;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.main {
+  background: #19222d;
+}
+
+.shop {
+  background: #171f29;
 }
 /*# sourceMappingURL=main.css.map */

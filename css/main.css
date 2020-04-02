@@ -32,6 +32,8 @@ a {
 
 .main {
   background: #19222d;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
 }
 
 .score {
@@ -83,6 +85,8 @@ a {
 
 .shop {
   background: #171f29;
+  padding-top: 4rem;
+  padding-bottom: 6rem;
 }
 
 .bonus {

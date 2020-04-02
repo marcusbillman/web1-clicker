@@ -24,7 +24,7 @@ body {
 }
 
 a {
-    color: inherit;
+    color: $clr-cyan;
 }
 
 .material-icons {
@@ -133,5 +133,18 @@ a {
         .material-icons {
             margin-right: 1rem;
         }
+    }
+}
+
+.footer {
+    margin-top: 10rem;
+    text-align: center;
+    font-size: 1.8rem;
+    &__title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    &__credit {
+        font-weight: 500;
     }
 }

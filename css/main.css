@@ -17,7 +17,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #00ffd0;
 }
 
 .material-icons {
@@ -164,5 +164,20 @@ a {
 
 .bonus__buy .material-icons {
   margin-right: 1rem;
+}
+
+.footer {
+  margin-top: 10rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.footer__title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer__credit {
+  font-weight: 500;
 }
 /*# sourceMappingURL=main.css.map */

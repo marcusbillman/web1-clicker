@@ -6,6 +6,10 @@ $clr-grey-3: #2d3640;
 $clr-grey-4: #424a53;
 $clr-grey-5: #575e66;
 
+$neon-glow: 0 0 20px rgba(0, 255, 208, 0.5);
+
+/* ========== GLOBAL ========== */
+
 * {
     margin: 0;
     padding: 0;
@@ -23,19 +27,25 @@ body {
     color: $clr-off-white;
 }
 
-a {
-    color: $clr-cyan;
-}
-
-.material-icons {
-    font-size: inherit;
-}
+/* ========== GENERAL ========== */
 
 .container {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
 }
+
+.material-icons {
+    font-size: inherit;
+}
+
+/* ========== TYPOGRAPHY ========== */
+
+a {
+    color: $clr-cyan;
+}
+
+/* ========== MAIN SECTION ========== */
 
 .main {
     background: $clr-grey-2;
@@ -53,7 +63,7 @@ a {
         font-size: 6.4rem;
         font-weight: 600;
         color: $clr-cyan;
-        text-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+        text-shadow: $neon-glow;
         margin-bottom: 1rem;
     }
     &__per-second {
@@ -70,7 +80,7 @@ a {
     color: inherit;
     background: $clr-grey-3;
     border: 0.6rem solid $clr-cyan;
-    box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+    box-shadow: $neon-glow;
     margin-top: 8rem;
     margin-left: auto;
     margin-right: auto;
@@ -78,6 +88,8 @@ a {
         font-size: 7.2rem;
     }
 }
+
+/* ========== SHOP SECTION ========== */
 
 .shop {
     background: $clr-grey-1;
@@ -133,12 +145,14 @@ a {
         background: $clr-cyan;
         border-radius: 1000px;
         padding: 2rem;
-        box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+        box-shadow: $neon-glow;
         .material-icons {
             margin-right: 1rem;
         }
     }
 }
+
+/* ========== FOOTER ========== */
 
 .footer {
     margin-top: 10rem;

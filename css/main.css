@@ -1,3 +1,4 @@
+/* ========== GLOBAL ========== */
 * {
   margin: 0;
   padding: 0;
@@ -16,20 +17,23 @@ body {
   color: #edfeff;
 }
 
-a {
-  color: #00ffd0;
-}
-
-.material-icons {
-  font-size: inherit;
-}
-
+/* ========== GENERAL ========== */
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+.material-icons {
+  font-size: inherit;
+}
+
+/* ========== TYPOGRAPHY ========== */
+a {
+  color: #00ffd0;
+}
+
+/* ========== MAIN SECTION ========== */
 .main {
   background: #19222d;
   padding-top: 6rem;
@@ -55,7 +59,7 @@ a {
   font-size: 6.4rem;
   font-weight: 600;
   color: #00ffd0;
-  text-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+  text-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
   margin-bottom: 1rem;
 }
 
@@ -72,8 +76,8 @@ a {
   color: inherit;
   background: #2d3640;
   border: 0.6rem solid #00ffd0;
-  -webkit-box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
-          box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+  -webkit-box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
+          box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
   margin-top: 8rem;
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +87,7 @@ a {
   font-size: 7.2rem;
 }
 
+/* ========== SHOP SECTION ========== */
 .shop {
   background: #171f29;
   padding-top: 4rem;
@@ -162,14 +167,15 @@ a {
   background: #00ffd0;
   border-radius: 1000px;
   padding: 2rem;
-  -webkit-box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
-          box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+  -webkit-box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
+          box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
 }
 
 .bonus__buy .material-icons {
   margin-right: 1rem;
 }
 
+/* ========== FOOTER ========== */
 .footer {
   margin-top: 10rem;
   text-align: center;

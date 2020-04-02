@@ -4,29 +4,38 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Clickerific</title>
-        <link rel="stylesheet" href="css/reset.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <title>Neon Clicker</title>
+        <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
-        <header>
-            <p id="score">Score: 0</p>
-        </header>
-        <main>
-            <button id="clicker" class="button clicker" data-value="1">
-                Click 1
-            </button>
-            <button id="clicker" class="button clicker" data-value="2">
-                Click 2
-            </button>
-            <button id="bonusButton1" class="button bonus">Bonus 1</button>
-            <button id="bonusButton2" class="button bonus">Bonus 2</button>
-
-            <p>
-                För introduktion och info kring javascript kolla
-                <a href="jsprimer.html">här</a>.
-            </p>
-        </main>
+        <div class="main">
+            <div class="score">
+                <p class="score__counter"></p>
+                <p class="score__per-second"></p>
+            </div>
+            <button class="plus-button"></button>
+        </div>
+        <div class="shop">
+            <div class="bonus">
+                <div class="bonus__top">
+                    <p class="bonus__counter">0</p>
+                    <div class="bonus__info">
+                        <p class="bonus__title">BONUS</p>
+                        <p class="bonus__specs">+10 points/s</p>
+                    </div>
+                </div>
+                <a href="#" class="bonus__buy">BUY</a>
+            </div>
+            <footer class="footer">
+                <p class="footer__title">Neon Clicker</p>
+                <p class="footer__credit">
+                    Created by
+                    <a href="https://github.com/marcusbillman"
+                        >Marcus Billman</a
+                    >
+                </p>
+            </footer>
+        </div>
         <script src="js/clicker.js"></script>
     </body>
 </html>

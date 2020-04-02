@@ -16,44 +16,46 @@
         <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
-        <div class="main">
-            <div class="container">
-                <div class="score">
-                    <p class="score__counter">1,337</p>
-                    <p class="score__per-second">70 points/s</p>
-                </div>
-                <button class="plus-button">
-                    <i class="material-icons">add</i>
-                </button>
-            </div>
-        </div>
-        <div class="shop">
-            <div class="container">
-                <div class="bonus">
-                    <div class="bonus__top">
-                        <div class="bonus__counter-wrapper">
-                            <p class="bonus__counter">0</p>
-                        </div>
-                        <div class="bonus__info">
-                            <p class="bonus__title">BONUS</p>
-                            <p class="bonus__specs">+10 points/s</p>
-                        </div>
+        <main class="main">
+            <section class="main-section">
+                <div class="container">
+                    <div class="score">
+                        <p class="score__counter">1,337</p>
+                        <p class="score__per-second">70 points/s</p>
                     </div>
-                    <a href="#" class="bonus__buy"
-                        ><i class="material-icons">shopping_cart</i>BUY</a
-                    >
+                    <button class="plus-button">
+                        <i class="material-icons">add</i>
+                    </button>
                 </div>
-                <footer class="footer">
-                    <p class="footer__title">Neon Clicker</p>
-                    <p class="footer__credit">
-                        Created by
-                        <a href="https://github.com/marcusbillman"
-                            >Marcus Billman</a
+            </section>
+            <section class="shop-section">
+                <div class="container">
+                    <div class="bonus">
+                        <div class="bonus__top">
+                            <div class="bonus__counter-wrapper">
+                                <p class="bonus__counter">0</p>
+                            </div>
+                            <div class="bonus__info">
+                                <p class="bonus__title">BONUS</p>
+                                <p class="bonus__specs">+10 points/s</p>
+                            </div>
+                        </div>
+                        <a href="#" class="bonus__buy"
+                            ><i class="material-icons">shopping_cart</i>BUY</a
                         >
-                    </p>
-                </footer>
-            </div>
-        </div>
+                    </div>
+                    <footer class="footer">
+                        <p class="footer__title">Neon Clicker</p>
+                        <p class="footer__credit">
+                            Created by
+                            <a href="https://github.com/marcusbillman"
+                                >Marcus Billman</a
+                            >
+                        </p>
+                    </footer>
+                </div>
+            </section>
+        </main>
         <script src="js/clicker.js"></script>
     </body>
 </html>

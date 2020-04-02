@@ -34,7 +34,7 @@ a {
 }
 
 /* ========== MAIN SECTION ========== */
-.main {
+.main-section {
   background: #19222d;
   padding-top: 6rem;
   padding-bottom: 8rem;
@@ -88,7 +88,7 @@ a {
 }
 
 /* ========== SHOP SECTION ========== */
-.shop {
+.shop-section {
   background: #171f29;
   padding-top: 4rem;
   padding-bottom: 6rem;

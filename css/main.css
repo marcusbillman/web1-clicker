@@ -58,6 +58,25 @@ a {
   font-weight: 400;
 }
 
+.plus-button {
+  display: block;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 1000px;
+  color: inherit;
+  background: #2d3640;
+  border: 0.6rem solid #00ffd0;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+          box-shadow: 0px 0px 20px rgba(0, 255, 208, 0.5);
+  margin-top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plus-button .material-icons {
+  font-size: 7.2rem;
+}
+
 .shop {
   background: #171f29;
 }

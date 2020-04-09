@@ -68,11 +68,10 @@ a {
     flex-direction: column;
     padding: 4rem 10rem;
     border: 0.6rem solid $clr-grey-3;
-    &__counter {
+    .odometer {
         font-size: 6.4rem;
         font-weight: 600;
         color: $clr-cyan;
-        text-shadow: $neon-glow;
         margin-bottom: 1rem;
     }
     &__per-second {

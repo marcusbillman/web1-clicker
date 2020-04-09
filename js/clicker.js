@@ -115,7 +115,7 @@ function runClicker() {
     bonusButton.disabled = clicker.score < 100;
 
     // uppdaterar score texten
-    scoreCounter.textContent = clicker.score;
+    scoreCounter.innerHTML = clicker.score;
 
     // uppdatera score/second
     scorePerSecond.textContent = perSecond + " points/s";

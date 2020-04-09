@@ -59,6 +59,7 @@ window.addEventListener(
         const bonusButton1 = document.querySelector("#bonusBuyButton");
         const scoreCounter = document.querySelector("#scoreCounter");
         const scorePerSecond = document.querySelector("#scorePerSecond");
+        const bonusCounter = document.querySelector("#bonusCounter");
 
         // eventlisteners för knappar med tillhörande funktioner
 
@@ -94,6 +95,8 @@ window.addEventListener(
 function runClicker() {
     clicker.update(); // uppdatera spelet
 
+    let perSecond = 0;
+
     // gå igenom spelets bonusar och aktivera dem
     for (let bonus of clicker.activeBonuses) {
         bonus.update(clicker.timer);
@@ -105,17 +108,18 @@ function runClicker() {
                 1
             );
         }
+
+        perSecond += bonus.value / (bonus.interval / 60);
     }
 
     // uppdaterar score texten
     scoreCounter.textContent = clicker.score;
 
     // uppdatera score/second
-    let perSecond = 0;
-    for (let bonus of clicker.activeBonuses) {
-        perSecond += bonus.value / (bonus.interval / 60);
-    }
     scorePerSecond.textContent = perSecond + " points/s";
+
+    // uppdatera bonus counter
+    bonusCounter.textContent = Object.keys(clicker.activeBonuses).length;
 
     window.requestAnimationFrame(runClicker);
 }

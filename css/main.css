@@ -190,6 +190,14 @@ a {
   margin-right: 1rem;
 }
 
+.bonus__buy:disabled {
+  color: #edfeff;
+  background: #424a53;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: not-allowed;
+}
+
 /* ========== FOOTER ========== */
 .footer {
   margin-top: 10rem;

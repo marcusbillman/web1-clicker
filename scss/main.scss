@@ -159,6 +159,12 @@ a {
         .material-icons {
             margin-right: 1rem;
         }
+        &:disabled {
+            color: $clr-off-white;
+            background: $clr-grey-4;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
     }
 }
 

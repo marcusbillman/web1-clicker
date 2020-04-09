@@ -50,17 +50,17 @@ const Bonus = function (duration, value, interval) {
 let clicker = Clicker();
 let score;
 
+// Hämta html element
+const clickerButton = document.querySelector("#plusButton");
+const bonusButton = document.querySelector("#bonusBuyButton");
+const scoreCounter = document.querySelector("#scoreCounter");
+const scorePerSecond = document.querySelector("#scorePerSecond");
+const bonusCounter = document.querySelector("#bonusCounter");
+
 // Vänta på att sidan ska laddas
 window.addEventListener(
     "load",
     (event) => {
-        // Hämta html element
-        const clickerButton = document.querySelector("#plusButton");
-        const bonusButton = document.querySelector("#bonusBuyButton");
-        const scoreCounter = document.querySelector("#scoreCounter");
-        const scorePerSecond = document.querySelector("#scorePerSecond");
-        const bonusCounter = document.querySelector("#bonusCounter");
-
         // eventlisteners för knappar med tillhörande funktioner
 
         clickerButton.addEventListener(
@@ -76,6 +76,7 @@ window.addEventListener(
             "click",
             (e) => {
                 // vid click skapa och lägg till denna bonus
+                clicker.score -= 100;
                 clicker.activeBonuses.push(Bonus(10, 2, 60));
             },
             false
@@ -111,6 +112,8 @@ function runClicker() {
 
         perSecond += bonus.value / (bonus.interval / 60);
     }
+
+    bonusButton.disabled = clicker.score < 100;
 
     // uppdaterar score texten
     scoreCounter.textContent = clicker.score;

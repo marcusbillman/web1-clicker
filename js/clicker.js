@@ -67,7 +67,6 @@ window.addEventListener(
             "click",
             (e) => {
                 clicker.click(1);
-                console.log(clicker.score);
             },
             true
         );

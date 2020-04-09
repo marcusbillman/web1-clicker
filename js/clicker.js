@@ -7,17 +7,17 @@
  * update körs av requestanimationframe
  * click(värde) körs för att uppdatera score
  */
-const Clicker = function() {
+const Clicker = function () {
     const clicker = {};
     clicker.score = 0;
     clicker.timer = 0;
     clicker.activeBonuses = [];
 
-    clicker.update = function() {
+    clicker.update = function () {
         clicker.timer++;
     };
 
-    clicker.click = function(val) {
+    clicker.click = function (val) {
         clicker.score += val;
     };
 
@@ -31,13 +31,13 @@ const Clicker = function() {
  *
  * update kallas i requestanimationframe
  */
-const Bonus = function(duration, value, interval) {
+const Bonus = function (duration, value, interval) {
     const bonus = {};
     bonus.duration = duration;
     bonus.value = value;
     bonus.interval = interval;
 
-    bonus.update = function(timer) {
+    bonus.update = function (timer) {
         if (timer % this.interval === 0) {
             this.duration--;
             clicker.click(this.value);
@@ -53,44 +53,29 @@ let score;
 // Vänta på att sidan ska laddas
 window.addEventListener(
     "load",
-    event => {
-        console.log("page is fully loaded");
-
+    (event) => {
         // Hämta html element
-        let clickerButtons = document.querySelectorAll(".clicker");
-        let bonusButton1 = document.querySelector("#bonusButton1");
-        let bonusButton2 = document.querySelector("#bonusButton2");
-        score = document.querySelector("#score"); // score element
+        const clickerButton = document.querySelector("#plusButton");
+        const bonusButton1 = document.querySelector("#bonusBuyButton");
+        const scoreCounter = document.querySelector("#scoreCounter");
+        const scorePerSecond = document.querySelector("#scorePerSecond");
 
         // eventlisteners för knappar med tillhörande funktioner
 
-        clickerButtons.forEach(button => {
-            button.addEventListener(
-                "click",
-                e => {
-                    clicker.click(
-                        parseInt(e.target.getAttribute("data-value"))
-                    );
-                    console.log(clicker.score);
-                },
-                true
-            );
-        });
+        clickerButton.addEventListener(
+            "click",
+            (e) => {
+                clicker.click(1);
+                console.log(clicker.score);
+            },
+            true
+        );
 
         bonusButton1.addEventListener(
             "click",
-            e => {
+            (e) => {
                 // vid click skapa och lägg till denna bonus
-                clicker.activeBonuses.push(Bonus(10, 2, 60));
-            },
-            false
-        );
-
-        bonusButton2.addEventListener(
-            "click",
-            e => {
-                // vid click skapa och lägg till denna bonus
-                clicker.activeBonuses.push(Bonus(10, 10, 60));
+                clicker.activeBonuses.push(Bonus(10, 2, 120));
             },
             false
         );
@@ -116,14 +101,21 @@ function runClicker() {
         // om en bonus löpt ut, ta bort den från arrayen
         if (bonus.duration <= 0) {
             clicker.activeBonuses.splice(
-                clicker.activeBonuses.indexOf(x => x === bonus),
+                clicker.activeBonuses.indexOf((x) => x === bonus),
                 1
             );
         }
     }
 
     // uppdaterar score texten
-    score.textContent = "Score: " + clicker.score;
+    scoreCounter.textContent = clicker.score;
+
+    // uppdatera score/second
+    let perSecond = 0;
+    for (let bonus of clicker.activeBonuses) {
+        perSecond += bonus.value / (bonus.interval / 60);
+    }
+    scorePerSecond.textContent = perSecond + " points/s";
 
     window.requestAnimationFrame(runClicker);
 }

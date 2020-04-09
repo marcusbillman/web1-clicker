@@ -20,10 +20,12 @@
             <section class="main-section">
                 <div class="container main-section__container">
                     <div class="score">
-                        <p class="score__counter">1,337</p>
-                        <p class="score__per-second">70 points/s</p>
+                        <p class="score__counter" id="scoreCounter">0</p>
+                        <p class="score__per-second" id="scorePerSecond">
+                            70 points/s
+                        </p>
                     </div>
-                    <button class="plus-button">
+                    <button class="plus-button" id="plusButton">
                         <i class="material-icons">add</i>
                     </button>
                 </div>
@@ -40,7 +42,7 @@
                                 <p class="bonus__specs">+10 points/s</p>
                             </div>
                         </div>
-                        <a href="#" class="bonus__buy"
+                        <a href="#" class="bonus__buy" id="bonusBuyButton"
                             ><i class="material-icons">shopping_cart</i>BUY</a
                         >
                     </div>

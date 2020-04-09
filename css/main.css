@@ -74,7 +74,8 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 4rem 10rem;
+  padding: 4rem 0;
+  width: 100%;
   border: 0.6rem solid #2d3640;
 }
 
@@ -257,11 +258,6 @@ a {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-  }
-  .score {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
   }
   .bonus {
     width: 42rem;

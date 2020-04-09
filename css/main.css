@@ -38,6 +38,10 @@ body {
   background: #00ffd0;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* ========== TYPOGRAPHY ========== */
 a {
   color: #00ffd0;
@@ -88,7 +92,6 @@ a {
   border: 0.6rem solid #00ffd0;
   -webkit-box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
           box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
-  cursor: pointer;
   margin-top: 8rem;
   margin-left: auto;
   margin-right: auto;
@@ -157,6 +160,7 @@ a {
 
 .bonus__buy {
   position: absolute;
+  width: 100%;
   left: 0;
   right: 0;
   bottom: 0;

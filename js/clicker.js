@@ -56,7 +56,7 @@ window.addEventListener(
     (event) => {
         // Hämta html element
         const clickerButton = document.querySelector("#plusButton");
-        const bonusButton1 = document.querySelector("#bonusBuyButton");
+        const bonusButton = document.querySelector("#bonusBuyButton");
         const scoreCounter = document.querySelector("#scoreCounter");
         const scorePerSecond = document.querySelector("#scorePerSecond");
         const bonusCounter = document.querySelector("#bonusCounter");
@@ -72,11 +72,11 @@ window.addEventListener(
             true
         );
 
-        bonusButton1.addEventListener(
+        bonusButton.addEventListener(
             "click",
             (e) => {
                 // vid click skapa och lägg till denna bonus
-                clicker.activeBonuses.push(Bonus(10, 2, 120));
+                clicker.activeBonuses.push(Bonus(10, 2, 60));
             },
             false
         );
@@ -104,7 +104,7 @@ function runClicker() {
         // om en bonus löpt ut, ta bort den från arrayen
         if (bonus.duration <= 0) {
             clicker.activeBonuses.splice(
-                clicker.activeBonuses.indexOf((x) => x === bonus),
+                clicker.activeBonuses.indexOf(bonus),
                 1
             );
         }

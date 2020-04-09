@@ -28,6 +28,16 @@ body {
   font-size: inherit;
 }
 
+::-moz-selection {
+  color: #19222d;
+  background: #00ffd0;
+}
+
+::selection {
+  color: #19222d;
+  background: #00ffd0;
+}
+
 /* ========== TYPOGRAPHY ========== */
 a {
   color: #00ffd0;

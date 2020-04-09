@@ -39,6 +39,11 @@ body {
     font-size: inherit;
 }
 
+::selection {
+    color: $clr-grey-2;
+    background: $clr-cyan;
+}
+
 /* ========== TYPOGRAPHY ========== */
 
 a {

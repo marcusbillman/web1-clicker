@@ -67,6 +67,7 @@ window.addEventListener(
             "click",
             (e) => {
                 clicker.click(1);
+                ripple();
             },
             true
         );

@@ -89,8 +89,18 @@ a {
     }
 }
 
+.plus-button-wrapper {
+    position: relative;
+    width: min-content;
+    margin-top: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .plus-button {
     display: block;
+    position: relative;
+    z-index: 1;
     width: 22rem;
     height: 22rem;
     border-radius: 1000px;
@@ -98,9 +108,6 @@ a {
     background: $clr-grey-3;
     border: 0.6rem solid $clr-cyan;
     box-shadow: $neon-glow;
-    margin-top: 8rem;
-    margin-left: auto;
-    margin-right: auto;
     transition: transform 50ms ease-out;
     .material-icons {
         font-size: 7.2rem;
@@ -108,6 +115,30 @@ a {
     &:active {
         transform: scale(0.9);
         box-shadow: none;
+    }
+}
+
+.ripple {
+    border-radius: 50%;
+    border: 6px solid $clr-grey-4;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes ripple {
+    from {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
     }
 }
 

@@ -92,8 +92,20 @@ a {
   font-weight: 400;
 }
 
+.plus-button-wrapper {
+  position: relative;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin-top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .plus-button {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 22rem;
   height: 22rem;
   border-radius: 1000px;
@@ -102,9 +114,6 @@ a {
   border: 0.6rem solid #00ffd0;
   -webkit-box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
           box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
-  margin-top: 8rem;
-  margin-left: auto;
-  margin-right: auto;
   -webkit-transition: -webkit-transform 50ms ease-out;
   transition: -webkit-transform 50ms ease-out;
   transition: transform 50ms ease-out;
@@ -120,6 +129,47 @@ a {
           transform: scale(0.9);
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.ripple {
+  border-radius: 50%;
+  border: 6px solid #424a53;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  overflow: hidden;
+  -webkit-animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+          animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+}
+
+@-webkit-keyframes ripple {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
 }
 
 /* ========== SHOP SECTION ========== */

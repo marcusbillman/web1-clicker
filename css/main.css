@@ -105,10 +105,21 @@ a {
   margin-top: 8rem;
   margin-left: auto;
   margin-right: auto;
+  -webkit-transition: -webkit-transform 50ms ease-out;
+  transition: -webkit-transform 50ms ease-out;
+  transition: transform 50ms ease-out;
+  transition: transform 50ms ease-out, -webkit-transform 50ms ease-out;
 }
 
 .plus-button .material-icons {
   font-size: 7.2rem;
+}
+
+.plus-button:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /* ========== SHOP SECTION ========== */
@@ -194,6 +205,8 @@ a {
   padding: 2rem;
   -webkit-box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
           box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 .bonus__buy .material-icons {

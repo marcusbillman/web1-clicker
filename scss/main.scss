@@ -101,8 +101,13 @@ a {
     margin-top: 8rem;
     margin-left: auto;
     margin-right: auto;
+    transition: transform 50ms ease-out;
     .material-icons {
         font-size: 7.2rem;
+    }
+    &:active {
+        transform: scale(0.9);
+        box-shadow: none;
     }
 }
 
@@ -164,6 +169,7 @@ a {
         border-radius: 1000px;
         padding: 2rem;
         box-shadow: $neon-glow;
+        transition: all 0.2s;
         .material-icons {
             margin-right: 1rem;
         }

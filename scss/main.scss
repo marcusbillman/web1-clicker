@@ -129,6 +129,12 @@ a {
     transform: translate(-50%, -50%);
     overflow: hidden;
     animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+    &--big {
+        width: 600px;
+        height: 600px;
+        border-color: $clr-cyan;
+        animation-duration: 1s;
+    }
 }
 
 @keyframes ripple {

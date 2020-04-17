@@ -146,6 +146,14 @@ a {
           animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
 }
 
+.ripple--big {
+  width: 600px;
+  height: 600px;
+  border-color: #00ffd0;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
 @-webkit-keyframes ripple {
   from {
     -webkit-transform: translate(-50%, -50%) scale(0);

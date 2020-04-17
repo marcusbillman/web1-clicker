@@ -67,7 +67,11 @@ window.addEventListener(
             "click",
             (e) => {
                 clicker.click(1);
-                ripple();
+                if (clicker.score % 100 === 0) {
+                    ripple("big");
+                } else {
+                    ripple("normal");
+                }
             },
             true
         );

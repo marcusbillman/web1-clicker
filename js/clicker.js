@@ -82,6 +82,10 @@ window.addEventListener(
                 // vid click skapa och lägg till denna bonus
                 clicker.score -= 100;
                 clicker.activeBonuses.push(Bonus(10, 2, 60));
+                bonusButton.children[0].classList.add("wiggle");
+                bonusButton.children[0].addEventListener("animationend", () => {
+                    bonusButton.children[0].classList.remove("wiggle");
+                });
             },
             false
         );

@@ -282,6 +282,49 @@ a {
   cursor: not-allowed;
 }
 
+.bonus__buy .material-icons.wiggle {
+  -webkit-animation: wiggle 0.6s forwards;
+          animation: wiggle 0.6s forwards;
+}
+
+@-webkit-keyframes wiggle {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: translateY(4px) rotate(20deg);
+            transform: translateY(4px) rotate(20deg);
+  }
+  75% {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: translateY(4px) rotate(20deg);
+            transform: translateY(4px) rotate(20deg);
+  }
+  75% {
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
 /* ========== FOOTER ========== */
 .footer {
   margin-top: 10rem;

@@ -59,6 +59,7 @@ a {
 /* ========== MAIN SECTION ========== */
 .main-section {
   background: #19222d;
+  overflow: hidden;
   padding-top: 6rem;
   padding-bottom: 8rem;
 }
@@ -67,6 +68,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -76,7 +78,9 @@ a {
           flex-direction: column;
   padding: 4rem 0;
   width: 100%;
+  background: #19222d;
   border: 0.6rem solid #2d3640;
+  z-index: 1;
 }
 
 .score .odometer {
@@ -141,7 +145,6 @@ a {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  overflow: hidden;
   -webkit-animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
           animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
 }

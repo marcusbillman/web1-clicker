@@ -65,17 +65,21 @@ a {
 
 .main-section {
     background: $clr-grey-2;
+    overflow: hidden;
     padding-top: 6rem;
     padding-bottom: 8rem;
 }
 
 .score {
     display: flex;
+    position: relative;
     align-items: center;
     flex-direction: column;
     padding: 4rem 0;
     width: 100%;
+    background: $clr-grey-2;
     border: 0.6rem solid $clr-grey-3;
+    z-index: 1;
     .odometer {
         font-family: "IBM Plex Mono", monospace;
         font-size: 6.4rem;
@@ -127,7 +131,6 @@ a {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden;
     animation: ripple 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
     &--big {
         width: 600px;

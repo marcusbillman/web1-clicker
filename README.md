@@ -1,3 +1,5 @@
+🌐 **Hemsidan finns på [GitHub Pages](https://ntig-umea.github.io/clicker-marcusbillman/).**
+
 # Clicker, webbprojekt
 
 Du har fått i uppdrag att designa och skapa ett clicker-spel från Kakmonstret AB. Till ditt förfogande har du en viss del javascript kod som en tidigare anställd lämnat efter sig, använd den.

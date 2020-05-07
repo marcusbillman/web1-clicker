@@ -12,6 +12,15 @@ const Clicker = function () {
     clicker.score = 0;
     clicker.timer = 0;
     clicker.activeBonuses = [];
+    clicker.bonuses = [
+        {
+            name: "Afterglow",
+            duration: Infinity,
+            value: 1,
+            interval: 2,
+            price: 30,
+        },
+    ];
 
     clicker.update = function () {
         clicker.timer++;
@@ -33,7 +42,7 @@ const Clicker = function () {
  */
 const Bonus = function (duration, value, interval) {
     const bonus = {};
-    bonus.duration = duration;
+    bonus.duration = duration * 60;
     bonus.value = value;
     bonus.interval = interval;
 
@@ -56,11 +65,22 @@ const bonusButton = document.querySelector("#bonusBuyButton");
 const scoreCounter = document.querySelector("#scoreCounter");
 const scorePerSecond = document.querySelector("#scorePerSecond");
 const bonusCounter = document.querySelector("#bonusCounter");
+const bonusTemplate = document.querySelector("#bonusTemplate");
+const shopBonuses = document.querySelector("#shopBonuses");
 
 // Vänta på att sidan ska laddas
 window.addEventListener(
     "load",
     (event) => {
+        clicker.bonuses.forEach((bonus) => {
+            const bonusElement = bonusTemplate.cloneNode(true);
+            shopBonuses.appendChild(bonusElement);
+            bonusElement.querySelector(".bonus__title").innerHTML = bonus.name;
+            bonusElement.querySelector(".bonus__specs").innerHTML =
+                "+" + bonus.value + " points / " + bonus.interval + " s";
+            bonusElement.querySelector(".bonus__buy").innerHTML +=
+                bonus.price + " points";
+        });
         // eventlisteners för knappar med tillhörande funktioner
 
         clickerButton.addEventListener(

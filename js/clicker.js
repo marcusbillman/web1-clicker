@@ -15,17 +15,17 @@ const Clicker = function () {
     clicker.bonuses = [
         {
             name: "Afterglow",
-            duration: Infinity,
             value: 1,
             interval: 2,
             price: 30,
+            quantity: 0,
         },
         {
             name: "Radiance",
-            duration: Infinity,
             value: 1,
             interval: 1,
             price: 80,
+            quantity: 0,
         },
     ];
 
@@ -47,15 +47,14 @@ const Clicker = function () {
  *
  * update kallas i requestanimationframe
  */
-const Bonus = function (duration, value, interval) {
+const Bonus = function (name, value, interval) {
     const bonus = {};
-    bonus.duration = duration * 60;
+    bonus.name = name;
     bonus.value = value;
     bonus.interval = interval * 60;
 
     bonus.update = function (timer) {
         if (timer % this.interval === 0) {
-            this.duration--;
             clicker.click(this.value);
         }
     };
@@ -69,9 +68,9 @@ let score;
 // Hämta html element
 const clickerButton = document.querySelector("#plusButton");
 const bonusBuyButtons = document.querySelectorAll(".bonus__buy");
+const bonusCounters = document.querySelectorAll(".bonus__counter");
 const scoreCounter = document.querySelector("#scoreCounter");
 const scorePerSecond = document.querySelector("#scorePerSecond");
-const bonusCounter = document.querySelector("#bonusCounter");
 const bonusTemplate = document.querySelector("#bonusTemplate");
 const shopBonuses = document.querySelector("#shopBonuses");
 
@@ -89,6 +88,9 @@ window.addEventListener(
                 bonus.price + " points";
             bonusElement
                 .querySelector(".bonus__buy")
+                .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
+            bonusElement
+                .querySelector(".bonus__counter")
                 .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
             bonusElement.id = "";
         });
@@ -116,8 +118,9 @@ window.addEventListener(
                         clicker.bonuses[button.getAttribute("bonusIndex")];
                     clicker.score -= bonus.price;
                     clicker.activeBonuses.push(
-                        Bonus(bonus.duration, bonus.value, bonus.interval)
+                        Bonus(bonus.name, bonus.value, bonus.interval)
                     );
+                    bonus.quantity += 1;
                     button
                         .querySelector(".material-icons")
                         .classList.add("wiggle");
@@ -150,15 +153,6 @@ function runClicker() {
     // gå igenom spelets bonusar och aktivera dem
     for (let bonus of clicker.activeBonuses) {
         bonus.update(clicker.timer);
-
-        // om en bonus löpt ut, ta bort den från arrayen
-        if (bonus.duration <= 0) {
-            clicker.activeBonuses.splice(
-                clicker.activeBonuses.indexOf(bonus),
-                1
-            );
-        }
-
         perSecond += bonus.value / (bonus.interval / 60);
     }
 
@@ -178,7 +172,12 @@ function runClicker() {
     scorePerSecond.textContent = perSecond + " points/s";
 
     // uppdatera bonus counter
-    bonusCounter.textContent = Object.keys(clicker.activeBonuses).length;
+    document.querySelectorAll(".bonus__counter").forEach((counter) => {
+        const bonusIndex = counter.getAttribute("bonusIndex");
+        if (bonusIndex) {
+            counter.innerHTML = clicker.bonuses[bonusIndex].quantity;
+        }
+    });
 
     window.requestAnimationFrame(runClicker);
 }

@@ -80,8 +80,8 @@ window.addEventListener(
             "click",
             (e) => {
                 // vid click skapa och lägg till denna bonus
-                clicker.score -= 100;
-                clicker.activeBonuses.push(Bonus(10, 2, 60));
+                clicker.score -= 30;
+                clicker.activeBonuses.push(Bonus(Infinity, 1, 2 * 60));
                 bonusButton.children[0].classList.add("wiggle");
                 bonusButton.children[0].addEventListener("animationend", () => {
                     bonusButton.children[0].classList.remove("wiggle");
@@ -121,7 +121,7 @@ function runClicker() {
         perSecond += bonus.value / (bonus.interval / 60);
     }
 
-    bonusButton.disabled = clicker.score < 100;
+    bonusButton.disabled = clicker.score < 30;
 
     // uppdaterar score texten
     scoreCounter.innerHTML = clicker.score;

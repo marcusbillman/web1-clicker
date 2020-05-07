@@ -51,7 +51,7 @@ const Bonus = function (duration, value, interval) {
     const bonus = {};
     bonus.duration = duration * 60;
     bonus.value = value;
-    bonus.interval = interval;
+    bonus.interval = interval * 60;
 
     bonus.update = function (timer) {
         if (timer % this.interval === 0) {
@@ -68,7 +68,7 @@ let score;
 
 // Hämta html element
 const clickerButton = document.querySelector("#plusButton");
-const bonusButton = document.querySelector("#bonusBuyButton");
+const bonusBuyButtons = document.querySelectorAll(".bonus__buy");
 const scoreCounter = document.querySelector("#scoreCounter");
 const scorePerSecond = document.querySelector("#scorePerSecond");
 const bonusCounter = document.querySelector("#bonusCounter");
@@ -87,10 +87,13 @@ window.addEventListener(
                 "+" + bonus.value + " points / " + bonus.interval + " s";
             bonusElement.querySelector(".bonus__buy").innerHTML +=
                 bonus.price + " points";
+            bonusElement
+                .querySelector(".bonus__buy")
+                .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
             bonusElement.id = "";
         });
-        // eventlisteners för knappar med tillhörande funktioner
 
+        // eventlisteners för knappar med tillhörande funktioner
         clickerButton.addEventListener(
             "click",
             (e) => {
@@ -104,19 +107,29 @@ window.addEventListener(
             true
         );
 
-        bonusButton.addEventListener(
-            "click",
-            (e) => {
-                // vid click skapa och lägg till denna bonus
-                clicker.score -= 30;
-                clicker.activeBonuses.push(Bonus(Infinity, 1, 2 * 60));
-                bonusButton.children[0].classList.add("wiggle");
-                bonusButton.children[0].addEventListener("animationend", () => {
-                    bonusButton.children[0].classList.remove("wiggle");
-                });
-            },
-            false
-        );
+        document.querySelectorAll(".bonus__buy").forEach((button) => {
+            button.addEventListener(
+                "click",
+                (e) => {
+                    // vid click skapa och lägg till denna bonus
+                    const bonus =
+                        clicker.bonuses[button.getAttribute("bonusIndex")];
+                    clicker.score -= bonus.price;
+                    clicker.activeBonuses.push(
+                        Bonus(bonus.duration, bonus.value, bonus.interval)
+                    );
+                    button
+                        .querySelector(".material-icons")
+                        .classList.add("wiggle");
+                    button
+                        .querySelector(".material-icons")
+                        .addEventListener("animationend", () => {
+                            button.classList.remove("wiggle");
+                        });
+                },
+                false
+            );
+        });
 
         window.requestAnimationFrame(runClicker);
     },
@@ -149,7 +162,14 @@ function runClicker() {
         perSecond += bonus.value / (bonus.interval / 60);
     }
 
-    bonusButton.disabled = clicker.score < 30;
+    document.querySelectorAll(".bonus__buy").forEach((button) => {
+        const bonusIndex = button.getAttribute("bonusIndex");
+        if (bonusIndex) {
+            button.disabled =
+                clicker.score <
+                clicker.bonuses[button.getAttribute("bonusIndex")].price;
+        }
+    });
 
     // uppdaterar score texten
     scoreCounter.innerHTML = clicker.score;

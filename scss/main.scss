@@ -163,6 +163,9 @@ a {
     position: relative;
     padding: 2rem 2rem 5rem 2rem;
     background: $clr-grey-3;
+    &:not(:last-child) {
+        margin-bottom: 7rem;
+    }
     &__top {
         display: flex;
         align-items: center;
@@ -187,6 +190,7 @@ a {
     }
     &__title {
         font-weight: 700;
+        text-transform: uppercase;
     }
     &__specs {
         font-weight: 400;
@@ -204,6 +208,7 @@ a {
         font-size: 2rem;
         font-weight: 700;
         text-decoration: none;
+        text-transform: uppercase;
         color: $clr-grey-2;
         background: $clr-cyan;
         border-radius: 1000px;
@@ -222,6 +227,9 @@ a {
         .material-icons.wiggle {
             animation: wiggle 0.6s forwards;
         }
+    }
+    &#bonusTemplate {
+        display: none;
     }
 }
 

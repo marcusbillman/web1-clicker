@@ -20,6 +20,13 @@ const Clicker = function () {
             interval: 2,
             price: 30,
         },
+        {
+            name: "Radiance",
+            duration: Infinity,
+            value: 1,
+            interval: 1,
+            price: 80,
+        },
     ];
 
     clicker.update = function () {
@@ -80,6 +87,7 @@ window.addEventListener(
                 "+" + bonus.value + " points / " + bonus.interval + " s";
             bonusElement.querySelector(".bonus__buy").innerHTML +=
                 bonus.price + " points";
+            bonusElement.id = "";
         });
         // eventlisteners för knappar med tillhörande funktioner
 

@@ -36,6 +36,63 @@ const Clicker = function () {
 
     clicker.update = function () {
         clicker.timer++;
+
+        let perSecond = 0;
+
+        // gå igenom spelets bonusar och aktivera dem
+        for (let bonus of clicker.activeBonuses) {
+            bonus.update(clicker.timer);
+            perSecond += bonus.value / (bonus.interval / 60);
+        }
+
+        clicker.bonuses.forEach((bonus) => {
+            const previousIndex = clicker.bonuses.indexOf(bonus) - 1;
+            if (bonus.unlockQuantity) {
+                if (
+                    clicker.bonuses[previousIndex].quantity >=
+                    bonus.unlockQuantity
+                ) {
+                    bonus.unlocked = true;
+                }
+            }
+            bonus.element.querySelector(
+                ".bonus__title"
+            ).innerHTML = bonus.unlocked ? bonus.name : "???";
+            bonus.element.querySelector(
+                ".bonus__specs"
+            ).innerHTML = bonus.unlocked
+                ? "+" + bonus.value + " points / " + bonus.interval + " s"
+                : "???";
+            bonus.element.querySelector(
+                ".bonus__price"
+            ).innerHTML = bonus.unlocked ? bonus.price + " points" : "???";
+        });
+
+        document.querySelectorAll(".bonus__buy").forEach((button) => {
+            const bonusIndex = button.getAttribute("bonusIndex");
+            if (bonusIndex) {
+                button.disabled =
+                    clicker.score < clicker.bonuses[bonusIndex].price ||
+                    !clicker.bonuses[bonusIndex].unlocked;
+            }
+        });
+
+        // uppdaterar score texten
+        scoreCounter.innerHTML = clicker.score;
+
+        document.title = clicker.score + " • Neon Clicker";
+
+        // uppdatera score/second
+        scorePerSecond.textContent =
+            Math.round(perSecond * 10) / 10 + " points/s";
+
+        // uppdatera bonus counter
+        document.querySelectorAll(".bonus__counter").forEach((counter) => {
+            const bonusIndex = counter.getAttribute("bonusIndex");
+            if (bonusIndex) {
+                counter.innerHTML = clicker.bonuses[bonusIndex].quantity;
+            }
+        });
     };
 
     clicker.click = function (val) {
@@ -147,6 +204,9 @@ window.addEventListener(
     false
 );
 
+let deltaUpdate = 0;
+let lastTime = new Date().getTime();
+
 /*
  * runClicker är vår requestAnimationFrame metod
  * som webbläsaren försöker köra med 60 fps
@@ -154,60 +214,16 @@ window.addEventListener(
  * webbläsaren köra 60 ggr i sekunden
  */
 function runClicker() {
-    clicker.update(); // uppdatera spelet
+    //window.requestAnimationFrame(runClicker);
 
-    let perSecond = 0;
+    let currentTime = new Date().getTime();
+    deltaUpdate += (currentTime - lastTime) / (1000 / 60);
+    lastTime = currentTime;
 
-    // gå igenom spelets bonusar och aktivera dem
-    for (let bonus of clicker.activeBonuses) {
-        bonus.update(clicker.timer);
-        perSecond += bonus.value / (bonus.interval / 60);
+    while (deltaUpdate >= 1) {
+        deltaUpdate--;
+        clicker.update();
     }
-
-    clicker.bonuses.forEach((bonus) => {
-        const previousIndex = clicker.bonuses.indexOf(bonus) - 1;
-        if (bonus.unlockQuantity) {
-            if (
-                clicker.bonuses[previousIndex].quantity >= bonus.unlockQuantity
-            ) {
-                bonus.unlocked = true;
-            }
-        }
-        bonus.element.querySelector(".bonus__title").innerHTML = bonus.unlocked
-            ? bonus.name
-            : "???";
-        bonus.element.querySelector(".bonus__specs").innerHTML = bonus.unlocked
-            ? "+" + bonus.value + " points / " + bonus.interval + " s"
-            : "???";
-        bonus.element.querySelector(".bonus__price").innerHTML = bonus.unlocked
-            ? bonus.price + " points"
-            : "???";
-    });
-
-    document.querySelectorAll(".bonus__buy").forEach((button) => {
-        const bonusIndex = button.getAttribute("bonusIndex");
-        if (bonusIndex) {
-            button.disabled =
-                clicker.score < clicker.bonuses[bonusIndex].price ||
-                !clicker.bonuses[bonusIndex].unlocked;
-        }
-    });
-
-    // uppdaterar score texten
-    scoreCounter.innerHTML = clicker.score;
-
-    document.title = clicker.score + " • Neon Clicker";
-
-    // uppdatera score/second
-    scorePerSecond.textContent = Math.round(perSecond * 10) / 10 + " points/s";
-
-    // uppdatera bonus counter
-    document.querySelectorAll(".bonus__counter").forEach((counter) => {
-        const bonusIndex = counter.getAttribute("bonusIndex");
-        if (bonusIndex) {
-            counter.innerHTML = clicker.bonuses[bonusIndex].quantity;
-        }
-    });
 
     window.requestAnimationFrame(runClicker);
 }

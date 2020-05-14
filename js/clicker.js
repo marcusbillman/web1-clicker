@@ -181,7 +181,7 @@ function runClicker() {
     scoreCounter.innerHTML = clicker.score;
 
     // uppdatera score/second
-    scorePerSecond.textContent = perSecond + " points/s";
+    scorePerSecond.textContent = Math.round(perSecond * 10) / 10 + " points/s";
 
     // uppdatera bonus counter
     document.querySelectorAll(".bonus__counter").forEach((counter) => {

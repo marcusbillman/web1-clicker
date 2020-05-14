@@ -29,6 +29,7 @@ const Clicker = function () {
             price: 100,
             priceMultiplier: 1.3,
             unlocked: false,
+            unlockQuantity: 10,
             quantity: 0,
         },
     ];
@@ -164,6 +165,14 @@ function runClicker() {
     }
 
     clicker.bonuses.forEach((bonus) => {
+        const previousIndex = clicker.bonuses.indexOf(bonus) - 1;
+        if (bonus.unlockQuantity) {
+            if (
+                clicker.bonuses[previousIndex].quantity >= bonus.unlockQuantity
+            ) {
+                bonus.unlocked = true;
+            }
+        }
         bonus.element.querySelector(".bonus__title").innerHTML = bonus.unlocked
             ? bonus.name
             : "???";
@@ -179,8 +188,8 @@ function runClicker() {
         const bonusIndex = button.getAttribute("bonusIndex");
         if (bonusIndex) {
             button.disabled =
-                clicker.score <
-                clicker.bonuses[button.getAttribute("bonusIndex")].price;
+                clicker.score < clicker.bonuses[bonusIndex].price ||
+                !clicker.bonuses[bonusIndex].unlocked;
         }
     });
 

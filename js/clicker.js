@@ -152,6 +152,13 @@ window.addEventListener(
                 .querySelector(".bonus__buy")
                 .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
             bonus.element
+                .querySelector(".material-icons")
+                .addEventListener("animationend", () => {
+                    bonus.element
+                        .querySelector(".material-icons")
+                        .classList.remove("wiggle");
+                });
+            bonus.element
                 .querySelector(".bonus__counter")
                 .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
             bonus.element.id = "";
@@ -189,11 +196,6 @@ window.addEventListener(
                     button
                         .querySelector(".material-icons")
                         .classList.add("wiggle");
-                    button
-                        .querySelector(".material-icons")
-                        .addEventListener("animationend", () => {
-                            button.classList.remove("wiggle");
-                        });
                 },
                 false
             );

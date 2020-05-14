@@ -16,15 +16,17 @@ const Clicker = function () {
         {
             name: "Afterglow",
             value: 1,
-            interval: 2,
-            price: 30,
+            interval: 5,
+            price: 20,
+            priceMultiplier: 1.1,
             quantity: 0,
         },
         {
             name: "Radiance",
             value: 1,
             interval: 1,
-            price: 80,
+            price: 100,
+            priceMultiplier: 1.3,
             quantity: 0,
         },
     ];
@@ -121,6 +123,9 @@ window.addEventListener(
                         Bonus(bonus.name, bonus.value, bonus.interval)
                     );
                     bonus.quantity += 1;
+                    bonus.price = Math.round(
+                        bonus.price * bonus.priceMultiplier
+                    );
                     button
                         .querySelector(".material-icons")
                         .classList.add("wiggle");

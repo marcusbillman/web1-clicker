@@ -196,6 +196,8 @@ function runClicker() {
     // uppdaterar score texten
     scoreCounter.innerHTML = clicker.score;
 
+    document.title = clicker.score + " • Neon Clicker";
+
     // uppdatera score/second
     scorePerSecond.textContent = Math.round(perSecond * 10) / 10 + " points/s";
 

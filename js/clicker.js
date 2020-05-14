@@ -19,6 +19,7 @@ const Clicker = function () {
             interval: 5,
             price: 20,
             priceMultiplier: 1.1,
+            unlocked: true,
             quantity: 0,
         },
         {
@@ -27,6 +28,7 @@ const Clicker = function () {
             interval: 1,
             price: 100,
             priceMultiplier: 1.3,
+            unlocked: false,
             quantity: 0,
         },
     ];
@@ -162,10 +164,15 @@ function runClicker() {
     }
 
     clicker.bonuses.forEach((bonus) => {
-        bonus.element.querySelector(".bonus__specs").innerHTML =
-            "+" + bonus.value + " points / " + bonus.interval + " s";
-        bonus.element.querySelector(".bonus__price").innerHTML =
-            bonus.price + " points";
+        bonus.element.querySelector(".bonus__title").innerHTML = bonus.unlocked
+            ? bonus.name
+            : "???";
+        bonus.element.querySelector(".bonus__specs").innerHTML = bonus.unlocked
+            ? "+" + bonus.value + " points / " + bonus.interval + " s"
+            : "???";
+        bonus.element.querySelector(".bonus__price").innerHTML = bonus.unlocked
+            ? bonus.price + " points"
+            : "???";
     });
 
     document.querySelectorAll(".bonus__buy").forEach((button) => {

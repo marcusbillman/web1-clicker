@@ -78,8 +78,9 @@ const Clicker = function () {
         }
 
         clicker.bonuses.forEach((bonus) => {
+            let requiredBonus;
             if (bonus.unlockCondition) {
-                const requiredBonus = clicker.bonuses.find(
+                requiredBonus = clicker.bonuses.find(
                     (e) => e.name == bonus.unlockCondition.name
                 );
                 if (requiredBonus.quantity >= bonus.unlockCondition.quantity) {
@@ -96,7 +97,10 @@ const Clicker = function () {
                   bonus.value +
                   " neon / " +
                   (bonus.type == "click" ? "click" : bonus.interval + " s")
-                : "???";
+                : "Requires " +
+                  bonus.unlockCondition.quantity +
+                  " " +
+                  (requiredBonus.unlocked ? bonus.unlockCondition.name : "???");
             bonus.element.querySelector(
                 ".bonus__price"
             ).innerHTML = bonus.unlocked ? bonus.price + " neon" : "???";
@@ -215,7 +219,6 @@ window.addEventListener(
                     let random = Math.round(Math.random() * 4 + 1);
                     let audio = new Audio("../audio/click" + random + ".mp3");
                     audio.play();
-                    console.log(random);
                 }
             },
             true

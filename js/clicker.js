@@ -89,12 +89,12 @@ const Clicker = function () {
             ).innerHTML = bonus.unlocked
                 ? "+" +
                   bonus.value +
-                  " points / " +
+                  " neon / " +
                   (bonus.type == "click" ? "click" : bonus.interval + " s")
                 : "???";
             bonus.element.querySelector(
                 ".bonus__price"
-            ).innerHTML = bonus.unlocked ? bonus.price + " points" : "???";
+            ).innerHTML = bonus.unlocked ? bonus.price + " neon" : "???";
         });
 
         document.querySelectorAll(".bonus__buy").forEach((button) => {
@@ -116,7 +116,7 @@ const Clicker = function () {
 
         // uppdatera score/second
         scorePerSecond.textContent =
-            Math.round(perSecond * 10) / 10 + " points/s";
+            Math.round(perSecond * 10) / 10 + " neon/s";
 
         // uppdatera bonus counter
         document.querySelectorAll(".bonus__counter").forEach((counter) => {
@@ -177,9 +177,9 @@ window.addEventListener(
             shopBonuses.appendChild(bonus.element);
             bonus.element.querySelector(".bonus__title").innerHTML = bonus.name;
             bonus.element.querySelector(".bonus__specs").innerHTML =
-                "+" + bonus.value + " points / " + bonus.interval + " s";
+                "+" + bonus.value + " neon / " + bonus.interval + " s";
             bonus.element.querySelector(".bonus__price").innerHTML =
-                bonus.price + " points";
+                bonus.price + " neon";
             bonus.element
                 .querySelector(".bonus__buy")
                 .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));

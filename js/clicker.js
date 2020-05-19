@@ -106,6 +106,9 @@ const Clicker = function () {
             }
         });
 
+        document.querySelector(".plus-button").textContent =
+            "+" + clicker.clickValue;
+
         // uppdaterar score texten
         scoreCounter.innerHTML = clicker.score;
 

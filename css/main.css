@@ -122,10 +122,9 @@ a {
   transition: -webkit-transform 50ms ease-out;
   transition: transform 50ms ease-out;
   transition: transform 50ms ease-out, -webkit-transform 50ms ease-out;
-}
-
-.plus-button .material-icons {
-  font-size: 7.2rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 6.4rem;
 }
 
 .plus-button:active {

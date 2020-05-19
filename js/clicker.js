@@ -10,6 +10,7 @@
 const Clicker = function () {
     const clicker = {};
     clicker.score = 0;
+    clicker.clickValue = 1;
     clicker.timer = 0;
     clicker.activeBonuses = [];
     clicker.bonuses = [
@@ -50,6 +51,7 @@ const Clicker = function () {
         clicker.timer++;
 
         let perSecond = 0;
+        let perClick = 1;
 
         // gå igenom spelets bonusar och aktivera dem
         for (let bonusInstance of clicker.activeBonuses) {
@@ -62,6 +64,11 @@ const Clicker = function () {
                 perSecond +=
                     bonusInstance.value / (bonusInstance.interval / 60);
             }
+
+            if (bonusMaster.type == "click") {
+                perClick += bonusMaster.value;
+            }
+            clicker.clickValue = perClick;
         }
 
         clicker.bonuses.forEach((bonus) => {
@@ -117,8 +124,8 @@ const Clicker = function () {
         });
     };
 
-    clicker.click = function (val) {
-        clicker.score += val;
+    clicker.click = function () {
+        clicker.score += clicker.clickValue;
     };
 
     return clicker;
@@ -139,7 +146,7 @@ const Bonus = function (name, value, interval) {
 
     bonus.update = function (timer) {
         if (timer % this.interval === 0) {
-            clicker.click(this.value);
+            clicker.score += this.value;
         }
     };
     return bonus;

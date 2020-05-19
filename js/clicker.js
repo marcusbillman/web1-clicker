@@ -32,7 +32,10 @@ const Clicker = function () {
             price: 100,
             priceMultiplier: 1.3,
             unlocked: false,
-            unlockQuantity: 10,
+            unlockCondition: {
+                name: "Afterglow",
+                quantity: 10,
+            },
             quantity: 0,
         },
         {
@@ -42,7 +45,10 @@ const Clicker = function () {
             price: 1000,
             priceMultiplier: 1.3,
             unlocked: false,
-            unlockQuantity: 10,
+            unlockCondition: {
+                name: "Radiance",
+                quantity: 10,
+            },
             quantity: 0,
         },
     ];
@@ -72,12 +78,11 @@ const Clicker = function () {
         }
 
         clicker.bonuses.forEach((bonus) => {
-            const previousIndex = clicker.bonuses.indexOf(bonus) - 1;
-            if (bonus.unlockQuantity) {
-                if (
-                    clicker.bonuses[previousIndex].quantity >=
-                    bonus.unlockQuantity
-                ) {
+            if (bonus.unlockCondition) {
+                const requiredBonus = clicker.bonuses.find(
+                    (e) => e.name == bonus.unlockCondition.name
+                );
+                if (requiredBonus.quantity >= bonus.unlockCondition.quantity) {
                     bonus.unlocked = true;
                 }
             }

@@ -15,6 +15,7 @@ const Clicker = function () {
     clicker.bonuses = [
         {
             name: "Afterglow",
+            type: "interval",
             value: 1,
             interval: 5,
             price: 20,
@@ -24,9 +25,20 @@ const Clicker = function () {
         },
         {
             name: "Radiance",
+            type: "interval",
             value: 1,
             interval: 1,
             price: 100,
+            priceMultiplier: 1.3,
+            unlocked: false,
+            unlockQuantity: 10,
+            quantity: 0,
+        },
+        {
+            name: "Luminosity",
+            type: "click",
+            value: 1,
+            price: 1000,
             priceMultiplier: 1.3,
             unlocked: false,
             unlockQuantity: 10,
@@ -40,9 +52,16 @@ const Clicker = function () {
         let perSecond = 0;
 
         // gå igenom spelets bonusar och aktivera dem
-        for (let bonus of clicker.activeBonuses) {
-            bonus.update(clicker.timer);
-            perSecond += bonus.value / (bonus.interval / 60);
+        for (let bonusInstance of clicker.activeBonuses) {
+            const bonusMaster = clicker.bonuses.find(
+                (e) => e.name == bonusInstance.name
+            );
+
+            if (bonusMaster.type == "interval") {
+                bonusInstance.update(clicker.timer);
+                perSecond +=
+                    bonusInstance.value / (bonusInstance.interval / 60);
+            }
         }
 
         clicker.bonuses.forEach((bonus) => {
@@ -61,7 +80,10 @@ const Clicker = function () {
             bonus.element.querySelector(
                 ".bonus__specs"
             ).innerHTML = bonus.unlocked
-                ? "+" + bonus.value + " points / " + bonus.interval + " s"
+                ? "+" +
+                  bonus.value +
+                  " points / " +
+                  (bonus.type == "click" ? "click" : bonus.interval + " s")
                 : "???";
             bonus.element.querySelector(
                 ".bonus__price"

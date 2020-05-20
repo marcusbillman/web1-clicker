@@ -104,15 +104,8 @@ const Clicker = function () {
             bonus.element.querySelector(
                 ".bonus__price"
             ).innerHTML = bonus.unlocked ? bonus.price + " neon" : "???";
-        });
-
-        document.querySelectorAll(".bonus__buy").forEach((button) => {
-            const bonusIndex = button.getAttribute("bonusIndex");
-            if (bonusIndex) {
-                button.disabled =
-                    clicker.score < clicker.bonuses[bonusIndex].price ||
-                    !clicker.bonuses[bonusIndex].unlocked;
-            }
+            bonus.element.querySelector(".bonus__buy").disabled =
+                clicker.score < bonus.price || !bonus.unlocked;
         });
 
         document.querySelector(".neon-button").textContent =

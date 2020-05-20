@@ -212,12 +212,12 @@ window.addEventListener(
                 clicker.click(1);
                 if (clicker.score % 100 === 0) {
                     ripple("big");
-                    let audio = new Audio("../audio/impact.mp3");
+                    let audio = new Audio("./audio/impact.mp3");
                     audio.play();
                 } else {
                     ripple("normal");
                     let random = Math.round(Math.random() * 4 + 1);
-                    let audio = new Audio("../audio/click" + random + ".mp3");
+                    let audio = new Audio("./audio/click" + random + ".mp3");
                     audio.play();
                 }
             },
@@ -242,7 +242,7 @@ window.addEventListener(
                     button
                         .querySelector(".material-icons")
                         .classList.add("wiggle");
-                    let audio = new Audio("../audio/purchase.mp3");
+                    let audio = new Audio("./audio/purchase.mp3");
                     audio.play();
                 },
                 false

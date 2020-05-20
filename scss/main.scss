@@ -93,7 +93,7 @@ a {
     }
 }
 
-.plus-button-wrapper {
+.neon-button-wrapper {
     position: relative;
     width: min-content;
     margin-top: 8rem;
@@ -101,7 +101,7 @@ a {
     margin-right: auto;
 }
 
-.plus-button {
+.neon-button {
     display: block;
     position: relative;
     z-index: 1;
@@ -188,7 +188,7 @@ a {
     &__info {
         font-size: 2rem;
     }
-    &__title {
+    &__name {
         font-weight: 700;
         text-transform: uppercase;
     }

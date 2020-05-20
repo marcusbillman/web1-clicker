@@ -88,7 +88,7 @@ const Clicker = function () {
                 }
             }
             bonus.element.querySelector(
-                ".bonus__title"
+                ".bonus__name"
             ).innerHTML = bonus.unlocked ? bonus.name : "???";
             bonus.element.querySelector(
                 ".bonus__specs"
@@ -115,7 +115,7 @@ const Clicker = function () {
             }
         });
 
-        document.querySelector(".plus-button").textContent =
+        document.querySelector(".neon-button").textContent =
             "+" + clicker.clickValue;
 
         // uppdaterar score texten
@@ -169,7 +169,7 @@ let clicker = Clicker();
 let score;
 
 // Hämta html element
-const clickerButton = document.querySelector("#plusButton");
+const neonButton = document.querySelector("#neonButton");
 const bonusBuyButtons = document.querySelectorAll(".bonus__buy");
 const bonusCounters = document.querySelectorAll(".bonus__counter");
 const scoreCounter = document.querySelector("#scoreCounter");
@@ -184,7 +184,7 @@ window.addEventListener(
         clicker.bonuses.forEach((bonus) => {
             bonus.element = bonusTemplate.cloneNode(true);
             shopBonuses.appendChild(bonus.element);
-            bonus.element.querySelector(".bonus__title").innerHTML = bonus.name;
+            bonus.element.querySelector(".bonus__name").innerHTML = bonus.name;
             bonus.element.querySelector(".bonus__specs").innerHTML =
                 "+" + bonus.value + " neon / " + bonus.interval + " s";
             bonus.element.querySelector(".bonus__price").innerHTML =
@@ -206,7 +206,7 @@ window.addEventListener(
         });
 
         // eventlisteners för knappar med tillhörande funktioner
-        clickerButton.addEventListener(
+        neonButton.addEventListener(
             "click",
             (e) => {
                 clicker.click(1);

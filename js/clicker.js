@@ -184,11 +184,6 @@ window.addEventListener(
         clicker.bonuses.forEach((bonus) => {
             bonus.element = bonusTemplate.cloneNode(true);
             shopBonuses.appendChild(bonus.element);
-            bonus.element.querySelector(".bonus__name").innerHTML = bonus.name;
-            bonus.element.querySelector(".bonus__specs").innerHTML =
-                "+" + bonus.value + " neon / " + bonus.interval + " s";
-            bonus.element.querySelector(".bonus__price").innerHTML =
-                bonus.price + " neon";
             bonus.element
                 .querySelector(".bonus__buy")
                 .setAttribute("bonusIndex", clicker.bonuses.indexOf(bonus));
